@@ -1,0 +1,15 @@
+<nav class="nav-border">
+  @if(auth.user)
+      <i class="fas fa-user"></i>
+      <a href="/u/{{ auth.user.id }}">
+        {{ auth.user.name }}
+      </a>
+      <i class="fas fa-sign-out-alt" style="margin-left: 4pt;"></i>
+      <a href="/logout">Sair</a>
+  @else
+      <i class="fas fa-sign-in-alt"></i>
+  <a href="/login" class="">Entrar</a>
+      <i class="fas fa-user-plus" style="margin-left: 4pt;"></i>
+      <a href="/join">Registrar-se</a>
+  @endif
+</nav>

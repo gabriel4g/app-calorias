@@ -1,0 +1,40 @@
+@layout('layouts/app')
+
+@section('content')
+    <div class="div-blue">
+        Calcular Calorias
+    </div>
+    <form action="" method="post">
+      <nav class="nav-border">
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="amount" type="text" style="height:40px; font-size:17px;" placeholder="Quantidade a ser consumida">
+      </label>
+        <button type="submit" class="btn btn-style btn-primary">calcular</button>
+      </nav>
+    </form>
+
+      <nav class="nav-border">
+        <ul>
+          <li style="padding: 2pt;">
+            <strong>Descrição:</strong>
+            {{ food.descricao }}
+          </li>
+          <li>
+            <strong>Carboidrato:</strong>
+            {{ food.carboidrato_g }} g
+          </li>
+          <li>
+            <strong>Proteinas:</strong>
+            {{ food.proteina_g}} g
+          </li>
+          <li>
+            <strong>Gordura:</strong>
+            {{ food.lipideos_g }} g
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-border" style="text-align: center;">
+          <p><strong>Caloridas total: </strong></p>
+          <p>{{ (calc)? calc.toFixed(2):'0' }} Kcal</p>
+      </nav>
+@endsection

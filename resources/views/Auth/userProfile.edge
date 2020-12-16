@@ -1,0 +1,76 @@
+@layout('layouts/app')
+
+@section('content')
+    <div class="div-bar">Perfil de
+        <strong>
+            {{ user.name }}
+        </strong>
+    </div>
+    <div class="border-profile">
+        <img id="profile-img"src="{{avatar}}" alt="">
+        <div id="status-profile">
+
+          <strong>Usuário(a)</strong>
+        </div>
+    </div>
+    <div class="border-profile" style="display: flex; flex-direction: column">
+      <ul>
+        <li style="text-align: center;">IMC:
+          @if(user.weight / (user.height * user.height) <= 18.5 )
+            <strong style="color: orange"> Abaixo do peso</strong>
+          @elseif(user.weight / (user.height * user.height) <= 24.9)
+            <strong style="color: green">Peso ideal (parabéns)</strong>
+          @elseif(user.weight / (user.height * user.height) <= 29.9)
+            <strong style="color: orange"> Levemente acima do peso </strong>
+          @elseif(user.weight / (user.height * user.height) <= 34.9)
+            <strong style="color: tomato">Obsidade grau 1</strong>
+          @elseif(user.weight / (user.height * user.height) <= 39.9)
+            <strong style="color: tomato">Obsidade grau 2 (severa)</strong>
+          @elseif(user.weight / (user.height * user.height) >= 40)
+              <strong style="color: tomato">Obesidade 3 (mórbida)</strong>
+          @endif
+        </li>
+      </ul>
+    </div>
+    <div class="border-profile" style="display: flex; flex-direction: column">
+        <ul>
+            <li>Usuário ID:
+                <strong>{{ user.id }}</strong>
+            </li>
+            <li>Sexo:
+                <strong>
+                  @if(user.wc == 'M')
+                    Masculino
+                  @elseif(user.sex == 'F')
+                    Feminino
+                  @endif
+                </strong>
+            </li>
+            <li>Localidade:
+                <strong>{{ user.location? user.location:''}}</strong>
+            </li>
+            <li>Relacionamento:
+                <strong>{{ user.relationship? user.relationship:''}}</strong>
+            </li>
+            <li>Orientação Sexual:
+                <strong>{{ user.sexual_orientation? user.sexual_orientation:''}}</strong>
+            </li>
+            <li>Peso:
+              <strong>{{ user.weight? user.weight:''}}</strong>
+          </li>
+          <li>Altura:
+            <strong>{{ user.height? user.height:''}}</strong>
+        </li>
+        </ul>
+    </div>
+    <div class="border-profile">
+        <ul>
+            <li><a href="">Mais informações</a></li>
+            @if(auth.user.permission == 0)
+                <li><a href="">Moderar usuário</a></li>
+                <li><a href="">Administrar usuário</a></li>
+                <li><a href="">Adicionar VIP</a></li>
+            @endif
+        </ul>
+    </div>
+@endsection

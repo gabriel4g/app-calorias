@@ -1,0 +1,27 @@
+@layout('layouts/app')
+
+@section('content')
+    <div class="div-blue">
+        Pesquisar alimento
+    </div>
+    <form action="" method="post">
+      <nav class="nav-border">
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="search" type="text" style="height:40px; font-size:17px;" placeholder="Digite o nome do alimento">
+      </label>
+        <button type="submit" class="btn btn-style btn-primary">pesquisar</button>
+      </nav>
+    </form>
+
+    @each(foods in food)
+      <nav class="nav-border">
+        <ul>
+          <li style="padding: 2pt;">
+            {{ foods.descricao }}
+            <a href="/desc/{{foods.id}}" style="margin: 2%;"><i class="fas fa-search"></i></a>
+          </li>
+        </ul>
+      </nav>
+    @endeach
+
+@endsection
