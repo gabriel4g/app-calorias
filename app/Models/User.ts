@@ -40,6 +40,9 @@ export default class User extends BaseModel {
   @column()
   public sexual_orientation: string
 
+
+  @column()
+  public permission: number
   @column()
   public rememberMeToken?: string
 

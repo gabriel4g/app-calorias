@@ -1,0 +1,30 @@
+@layout('layouts/app')
+
+@section('content')
+  <div class="div-blue">
+    Editar alimento
+  </div>
+  @include('imports/notification')
+  <nav class="nav-border">
+    <form action="" method="post">
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="DESCRIPTION" type="text" style="height:40px; font-size:17px;" placeholder="Digite a descrição do alimento" required value="{{(food.descricao)? food.descricao:''}}">
+        </label>
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="FATS" type="number" style="height:40px; font-size:17px;" placeholder="Quantidade de gorduras" step="any" required value="{{(food.lipideos_g)? food.lipideos_g:''}}">
+        </label>
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="CARBOHYDRATES" type="number" style="height:40px; font-size:17px;" placeholder="Quantidade de carboidratos" step="any" required value="{{(food.carboidrato_g)? food.carboidrato_g:''}}">
+        </label>
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="PROTEINS" type="number" style="height:40px; font-size:17px;" placeholder="Quantidade de proteinas" step="any" required required value="{{(food.proteina_g)? food.proteina_g:''}}">
+        </label>
+        <button type="submit" class="btn btn-style btn-primary">editar</button>
+
+    </form>
+    <a href="/edit/{{food.id}}/delete" class="btn btn-style btn-danger"
+          style="margin-bottom: 4%;">
+          Apagar alimento
+    </a>
+  </nav>
+@endsection

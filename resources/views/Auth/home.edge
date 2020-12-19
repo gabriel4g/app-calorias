@@ -4,24 +4,21 @@
     <div class="div-blue">
         Pesquisar alimento
     </div>
+    <p style="text-align: center; padding: 4pt;"> Não encontrou um alimento? <a href="/add">Adicione aqui</a>.</p>
+    @include('imports/notification')
+    @if(auth.user.weight == null)
+      <div class=" alert-danger"
+        id="notification">
+        <i class="fas fa-exclamation"></i>
+        Vá para configurações/,Configurações de Pefil e edite seu dados
+      </div>
+    @endif
     <form action="" method="post">
       <nav class="nav-border">
         <label for="" class="input-space" style="margin-top:2%">
-          <input name="search" type="text" style="height:40px; font-size:17px;" placeholder="Digite o nome do alimento">
+          <input name="search" type="text" style="height:40px; font-size:17px;" placeholder="Digite o nome do alimento" required>
       </label>
         <button type="submit" class="btn btn-style btn-primary">pesquisar</button>
       </nav>
     </form>
-
-    @each(foods in food)
-      <nav class="nav-border">
-        <ul>
-          <li style="padding: 2pt;">
-            {{ foods.descricao }}
-            <a href="/desc/{{foods.id}}" style="margin: 2%;"><i class="fas fa-search"></i></a>
-          </li>
-        </ul>
-      </nav>
-    @endeach
-
 @endsection

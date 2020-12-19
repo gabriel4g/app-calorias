@@ -1,0 +1,29 @@
+@layout('layouts/app')
+
+@section('content')
+    <div class="div-blue">
+        Adicionar alimento a lista
+    </div>
+    @include('imports/notification')
+    <form action="" method="post">
+      <nav class="nav-border">
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="DESCRIPTION" type="text" style="height:40px; font-size:17px;" placeholder="Digite a descrição do alimento" required>
+        </label>
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="FATS" type="number" style="height:40px; font-size:17px;" placeholder="Quantidade de gorduras" step="any" required>
+        </label>
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="CARBOHYDRATES" type="number" style="height:40px; font-size:17px;" placeholder="Quantidade de carboidratos" step="any" required>
+        </label>
+        <label for="" class="input-space" style="margin-top:2%">
+          <input name="PROTEINS" type="number" style="height:40px; font-size:17px;" placeholder="Quantidade de proteinas" step="any" required>
+        </label>
+        <button type="submit" class="btn btn-style btn-primary">adicionar</button>
+        <a href="/" class="btn btn-style btn-dark"
+          style="margin-bottom: 4%;">
+          voltar
+        </a>
+      </nav>
+    </form>
+@endsection

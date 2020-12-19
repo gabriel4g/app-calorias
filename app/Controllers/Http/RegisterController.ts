@@ -3,7 +3,7 @@
 import User from 'App/Models/User'
 import Notification from 'App/Helpers/NotificationHelper'
 
-export default class RegistersController {
+export default class RegisterController {
   public async index({ response, view, auth }) {
     if(auth.user) return response.redirect('/')
 

@@ -4,7 +4,7 @@ import User from 'App/Models/User'
 import Notification from 'App/Helpers/NotificationHelper'
 import gravatar from 'gravatar'
 
-export default class UsersController {
+export default class UserController {
   public async index({ params, response, view, auth }) {
       if(auth.user) {
           const USER = await User.find(params.id)
@@ -64,20 +64,21 @@ public async update({ session, response, request, auth}) {
     }
 }
 
-public async destroy({ response, auth, session }) {
-  const USER = await User.find(auth.user.id);
-  const MESSAGE = new Notification()
+  public async destroy({ response, auth, session }) {
+    const USER = await User.find(auth.user.id);
+    const MESSAGE = new Notification()
 
-  try {
-    if(USER) {
-      USER.delete()
-      await auth.logout();
-      MESSAGE.notificationFlash('danger', 'white', 'Erro ao salvar os dados!', 'exclamation')
-      MESSAGE.status(session, response)
+    try {
+      if(USER) {
+        USER.delete()
+        await auth.logout();
+        MESSAGE.notificationFlash('success', '', 'Conta deletada!', 'check')
+        MESSAGE.statusLogin(session, response)
 
+      }
+    } catch(err) {
+        MESSAGE.notificationFlash('danger', 'white', 'Erro ao salvar os dados!', 'exclamation')
+        MESSAGE.statusLogin(session, response)
     }
-  } catch(err) {
-
   }
-}
 }

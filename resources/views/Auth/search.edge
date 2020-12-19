@@ -1,0 +1,32 @@
+@layout('layouts/app')
+
+@section('content')
+    <div class="div-blue">
+        Alimentos pesquisados
+    </div>
+    @include('imports/notification')
+    @each(food in foods.rows)
+      <nav class="nav-border">
+        <ul>
+          <li>
+            {{ food.descricao }}
+            <a style="padding: 2pt;" href="/desc/{{food.id}}" style="margin: 2%;" target="_blank">
+              <i class="fas fa-search"></i>
+            </a>
+            @if(auth.user.permission === 0 || auth.user.permission === 1)
+              <a href="/edit/{{food.id}}" target="_blank"><i class="far fa-edit"></i></a>
+            @endif
+          </li>
+        </ul>
+      </nav>
+    @endeach
+    <p style="text-align: center;">
+      @each(anchor in foods.getUrlsForRange(1, foods.lastPage))
+        <a href="{{ anchor.url }}" class="btn {{ (qparams == anchor.page)? 'disabled':'btn-white'}}" style="margin-left: -2.6%">
+         [{{ anchor.page }}]
+        </a>
+      @endeach
+      <br>
+      <a href="/" class="btn btn-primary" style="margin-top: 2%;">voltar</a>
+    </p>
+@endsection

@@ -16,6 +16,7 @@ export default class UsersSchema extends BaseSchema {
       table.string('location', 120)
       table.string('relationship', 20)
       table.string('sexual_orientation', 26)
+      table.integer('permission', 1).notNullable() // 0: ADM, 1: MOD, 2: USER
       table.string('remember_me_token').nullable()
       table.timestamps(true)
     })

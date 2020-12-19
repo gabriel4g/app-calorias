@@ -6,9 +6,10 @@ import Notification from 'App/Helpers/NotificationHelper'
 
 export default class LoginController {
   public async index({ view, auth, response }) {
+    const COUNT = await User.query().from('users').count('id as total_count')
     if(auth.user) return response.redirect('/')
-
-    return view.render('login')
+    console.log(COUNT)
+    return view.render('login', { count: COUNT[0]})
   }
 
   public async check({ request, session, response, auth }) {

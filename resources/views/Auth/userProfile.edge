@@ -9,8 +9,13 @@
     <div class="border-profile">
         <img id="profile-img"src="{{avatar}}" alt="">
         <div id="status-profile">
-
-          <strong>Usuário(a)</strong>
+          @if(user.permission === 0)
+            <strong>Administrador(a)</strong>
+          @elseif(user.permission === 1)
+            <strong>Moderador(a)</strong>
+          @else
+            <strong>Usuário(a)</strong>
+          @endif
         </div>
     </div>
     <div class="border-profile" style="display: flex; flex-direction: column">
@@ -41,7 +46,7 @@
                 <strong>
                   @if(user.wc == 'M')
                     Masculino
-                  @elseif(user.sex == 'F')
+                  @elseif(user.wc == 'F')
                     Feminino
                   @endif
                 </strong>

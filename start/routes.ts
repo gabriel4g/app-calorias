@@ -22,7 +22,14 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'Auth/HomeController.index').middleware('auth')
 Route.post('/', 'Auth/HomeController.search').middleware('auth')
+Route.get('/search/:food', 'Auth/HomeController.page').middleware('auth')
 Route.get('/u/:id', 'Auth/UserController.index').middleware('auth')
+Route.get('/add', 'Auth/AddController.index').middleware('auth')
+Route.post('/add', 'Auth/AddController.store').middleware('auth')
+Route.get('/edit/:id', 'Auth/EditController.index').middleware('auth')
+Route.get('/edit/:id/delete', 'Auth/EditController.destroy').middleware('auth')
+Route.post('/edit/:id', 'Auth/EditController.store').middleware('auth')
+Route.get('/logout', 'LoginController.logout')
 
 Route.group(() => {
   Route.get('/:id', 'Auth/DescriptionController.index')

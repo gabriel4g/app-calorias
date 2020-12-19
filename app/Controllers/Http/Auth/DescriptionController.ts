@@ -2,7 +2,7 @@
 
 import Food from 'App/Models/Food'
 
-export default class DescriptionsController {
+export default class DescriptionController {
   public async index({ params, auth, response, view }) {
     if(auth.user) {
       const USER = await auth.authenticate()
